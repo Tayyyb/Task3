@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+    <!-- ...1... -->
+    <h3>1. Move one DIV buttons inside another DIV when clicked using JavaScript.
+        Move the following.
+    </h3>
+    <div id="source">
+        <button onclick="moveButton(this)">Button 1</button>
+        <button onclick="moveButton(this)">Button 2</button>
+        <button onclick="moveButton(this)">Button 3</button>
+    </div>
+    
+    <div id="destination">
+        <!-- Buttons will be moved here -->
+    </div>
+
+
+
+    <!-- ...2... -->
+    <h3> 2. Count number of rows and columns in a table using JavaScript.</h3>
+    <table id="myTable">
+        <tr>
+            <td>Row 1, Column 1</td>
+            <td>Row 1, Column 2</td>
+            <td>Row 1, Column 3</td>
+        </tr>
+        <tr>
+            <td>Row 2, Column 1</td>
+            <td>Row 2, Column 2</td>
+            <td>Row 2, Column 3</td>
+        </tr>
+        <tr>
+            <td>Row 3, Column 1</td>
+            <td>Row 3, Column 2</td>
+            <td>Row 3, Column 3</td>
+        </tr>
+    </table>
+    <button id="countButton">Count Rows and Columns</button>
+<div id="result"></div>
+
+
+
+<!-- 3 -->
+<h3> 3. Add options to a drop-down list using JavaScript.</h3>
+<select id="myDropdown">
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+</select>
+
+<button onclick="addOption()">Add Option</button>
+
+
+   <!-- 4 -->
+   <h3>4. Count child elements using JavaScript and add new attribute in child elements.</h3>
+   
+<div id="selected">
+    <p>Red</p>
+    <p>White</p>
+    <p>Green</p>
+    <p>Black</p>
+    <p>Blue</p>
+    <p>Orange</p>
+</div>
+
+<button onclick="countChildElements()">Count Child Elements</button>
+
+<div>
+    <label for="newAttribute">New Attribute:</label>
+    <input type="text" id="newAttribute" placeholder="Enter attribute name">
+    <button onclick="addAttributeToChildElements()">Add Attribute to Child Elements</button>
+</div>
+
+
+<!-- 5 -->
+<h3>5. Restrict "number"-only input for textboxes including decimal points..</h3>
+<label for="integerInput">Integer Input:</label>
+<input type="text" id="integerInput" oninput="validateNumberInput(this, true)" placeholder="Only numbers">
+<span id="integerResult">Result: </span>
+<span id="integerCount">Count: </span>
+<span id="integerErrorMessage" style="color: red;"></span>
+
+<br>
+
+<label for="decimalInput">Decimal Input:</label>
+<input type="text" id="decimalInput" oninput="validateNumberInput(this, false)" placeholder="Only numbers with decimals">
+<span id="decimalResult">Result: </span>
+<span id="decimalCount">Count: </span>
+<span id="decimalErrorMessage" style="color: red;"></span>
+
+<br>
+
+<span id="totalResult">Total Result: </span>
+
+
+<!-- 6 -->
+<h3>6. Select every link that has a “name” attribute, and change its background color.</h3>
+<a href="#" name="link1" onclick="changeColor(this)">Link with name attribute 1</a>
+<a href="#" name="link2" onclick="changeColor(this)">Link with name attribute 2</a>
+<a href="#" onclick="doNothing()">Regular Link 1</a>
+<a href="#" onclick="doNothing()">Regular Link 2</a>
+
+
+
+<!-- 7 -->
+<h3>7. Add a fMagnifier or Images, when hover on image it zoom</h3>
+<div class="image-container">
+    <img src="https://media.istockphoto.com/id/1383796215/photo/silhouette-of-man-holding-binoculars-on-mountain-peak-against-bright-sunlight-sky-background.jpg?s=1024x1024&w=is&k=20&c=QUKKZc4Xmh30nhFFAaZc2S6pOpoGcMVuc1cas4TgJbc=" alt="Sample Image">
+</div>
+
+
+<!-- 8 -->
+<h3>8. create a simple html template and add darkmode option in it</h3>
+<h4> Click On Dark Mode</h4>
+<button onclick="toggleDarkMode()">Dark Mode Enable</button>
+
+
+
+<!-- 9 -->
+<h3>9. create textfield with Count Remaining Characters in Textarea</h3>
+<label for="textarea">Type something:</label>
+<textarea id="textarea" oninput="countCharacters(this)"></textarea>
+<p>Remaining characters: <span id="charCount">0</span></p>
+
+
+
+<!-- 10 -->
+<h3>10. create simple table with add, delete and update option using AJAX and add sorting 
+    options</h3>
+    <h2>You can Add, Update and Delete Data in the Table</h2>
+
+<div>
+    <button onclick="addRow()">Add Row</button>
+</div>
+
+<table id="dataTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Table rows will be added dynamically using JavaScript -->
+    </tbody>
+</table>
+
+    <script src="test.js"></script>
+</body>
+</html>
