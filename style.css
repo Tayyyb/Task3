@@ -29,7 +29,7 @@
 
         .image-container img {
             transition: transform 4.9s ease;
-            width: 50%;
+            width: 100%;
             
         }
 
@@ -105,4 +105,40 @@
         padding: 5px;
         margin-right: 5px;
         cursor: pointer;
+    }
+
+    /* ...11.. */
+    form {
+        max-width: 400px;
+        margin: 20px auto;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    #formValues {
+        margin-top: 20px;
+        display: none;
+    }
+
+
+    #towns li {
+        transition: font-weight 0.3s ease; /* Add smooth transition for font-weight */
+    }
+
+    .highlight {
+        font-weight: bold;
+        color: blue; /* Add a color for better visibility */
     }

@@ -1,7 +1,7 @@
 //1//
 function moveButton(button) {
     // Get reference to the destination div
-    var destinationDiv = document.getElementById('destination');
+    let destinationDiv = document.getElementById('destination');
 
     // Remove the button from the source div
     button.parentNode.removeChild(button);
@@ -15,16 +15,16 @@ function moveButton(button) {
 //2//
 // Function to count rows and columns
 function countRowsAndColumns() {
-    var table = document.getElementById('myTable');
-    var rowCount = table.rows.length;
-    var colCount = table.rows[0].cells.length;
+    let table = document.getElementById('myTable');
+    let rowCount = table.rows.length;
+    let colCount = table.rows[0].cells.length;
 
     return "Number of rows: " + rowCount + "<br>Number of columns: " + colCount;
 }
 
 // Click event listener for the button
 document.getElementById('countButton').addEventListener('click', function() {
-    var resultDiv = document.getElementById('result');
+    let resultDiv = document.getElementById('result');
     resultDiv.innerHTML = countRowsAndColumns();
 });
 
@@ -48,13 +48,13 @@ function addOption() {
 
 //4//
  // Data structure to store added attributes
- var addedAttributes = {};
+ let addedAttributes = {};
 
  // Function to count child elements
  function countChildElements() {
-     var selectedDiv = document.getElementById('selected');
-     var childElements = selectedDiv.children;
-     var childCount = childElements.length;
+     let selectedDiv = document.getElementById('selected');
+     let childElements = selectedDiv.children;
+     let childCount = childElements.length;
 
      // Display the count of child elements
      alert("Number of child elements: " + childCount);
@@ -62,17 +62,17 @@ function addOption() {
 
  // Function to add a new attribute to child elements
  function addAttributeToChildElements() {
-     var selectedDiv = document.getElementById('selected');
-     var childElements = selectedDiv.children;
-     var newAttribute = document.getElementById('newAttribute').value;
+     let selectedDiv = document.getElementById('selected');
+     let childElements = selectedDiv.children;
+     let newAttribute = document.getElementById('newAttribute').value;
 
      if (newAttribute.trim() !== '') {
          // Store the new attribute in the data structure
          addedAttributes[newAttribute] = 'true';
 
          // Add the new attribute to each child element
-         for (var i = 0; i < childElements.length; i++) {
-             var currentChild = childElements[i];
+         for (let i = 0; i < childElements.length; i++) {
+             let currentChild = childElements[i];
              currentChild.setAttribute(newAttribute, 'true');
          }
 
@@ -88,10 +88,10 @@ function addOption() {
  
      // Function to validate number input
     function validateNumberInput(inputElement, integerOnly) {
-        var inputValue = inputElement.value;
+        let inputValue = inputElement.value;
 
         // Regular expression to match numbers, including decimals
-        var regexPattern = integerOnly ? /^-?\d+$/ : /^-?\d*\.?\d*$/;
+        let regexPattern = integerOnly ? /^-?\d+$/ : /^-?\d*\.?\d*$/;
 
         // Check if the input matches the pattern
         if (!regexPattern.test(inputValue)) {
@@ -99,27 +99,27 @@ function addOption() {
             inputElement.value = inputValue.replace(/[^0-9.]/g, '');
 
             // Display an error message
-            var errorMessageElementId = integerOnly ? 'integerErrorMessage' : 'decimalErrorMessage';
+            let errorMessageElementId = integerOnly ? 'integerErrorMessage' : 'decimalErrorMessage';
             document.getElementById(errorMessageElementId).innerText = 'Please enter a valid number';
         } else {
             // Clear error message if input is valid
-            var errorMessageElementId = integerOnly ? 'integerErrorMessage' : 'decimalErrorMessage';
+            let errorMessageElementId = integerOnly ? 'integerErrorMessage' : 'decimalErrorMessage';
             document.getElementById(errorMessageElementId).innerText = '';
         }
 
         // Count the number of digits (including decimals)
-        var count = inputValue.replace(/[^0-9.]/g, '').length;
+        let count = inputValue.replace(/[^0-9.]/g, '').length;
 
         // Display the result and count
-        var resultElementId = integerOnly ? 'integerResult' : 'decimalResult';
-        var countElementId = integerOnly ? 'integerCount' : 'decimalCount';
+        let resultElementId = integerOnly ? 'integerResult' : 'decimalResult';
+        let countElementId = integerOnly ? 'integerCount' : 'decimalCount';
         document.getElementById(resultElementId).innerText = 'Result: ' + inputElement.value;
         document.getElementById(countElementId).innerText = 'Count: ' + count;
 
         // Calculate and display the total result
-        var integerResult = parseFloat(document.getElementById('integerInput').value) || 0;
-        var decimalResult = parseFloat(document.getElementById('decimalInput').value) || 0;
-        var totalResult = integerResult + decimalResult;
+        let integerResult = parseFloat(document.getElementById('integerInput').value) || 0;
+        let decimalResult = parseFloat(document.getElementById('decimalInput').value) || 0;
+        let totalResult = integerResult + decimalResult;
         document.getElementById('totalResult').innerText = 'Total Result: ' + totalResult;
     }
 
@@ -149,12 +149,12 @@ function toggleDarkMode() {
 
 //9//
 function countCharacters(textarea) {
-    var maxLength = 100; // You can set your desired maximum character count
+    let maxLength = 100; // You can set your desired maximum character count
 
-    var currentLength = textarea.value.length;
-    var remainingLength = maxLength - currentLength;
+    let currentLength = textarea.value.length;
+    let remainingLength = maxLength - currentLength;
 
-    var charCountElement = document.getElementById('charCount');
+    let charCountElement = document.getElementById('charCount');
     charCountElement.textContent = remainingLength;
 
     // You can add more logic here if you want to limit the input further or provide user feedback.
@@ -278,3 +278,115 @@ function getCurrentData() {
 
     return currentData;
 }
+
+
+
+//11//
+function submitForm() {
+    // Validate the form using jQuery
+    if ($('#userForm')[0].checkValidity()) {
+        // Hide individual input fields
+        $('#userForm input').addClass('hidden');
+        
+        // Show the form values
+        showFormValues();
+    } else {
+        // Trigger HTML5 form validation UI
+        $('#userForm')[0].reportValidity();
+    }
+}
+
+function showFormValues() {
+    // Get form values
+    var fullName = $('#fullName').val();
+    var email = $('#email').val();
+    var password = '********'; // Hide the password for security reasons
+
+    // Display form values using AJAX
+    $.ajax({
+        type: 'POST',
+        url: 'submit_form.php', // Replace with your server-side script
+        data: {
+            fullName: fullName,
+            email: email,
+            password: password
+        },
+        success: function (response) {
+            // Display the form values in a designated div
+            $('#formValues').html('<p>Form values:</p>' +
+                '<p><strong>Full Name:</strong> ' + fullName + '</p>' +
+                '<p><strong>Email:</strong> ' + email + '</p>' +
+                '<p><strong>Password:</strong> ' + password + '</p>'
+            ).show();
+        },
+        error: function (error) {
+            console.error('Error submitting form:', error);
+        }
+    });
+}
+
+
+
+//12//
+function search() {
+    var searchText = $('#searchText').val().toLowerCase();
+    var townsList = $('#towns li');
+
+    var matches = 0;
+
+    townsList.each(function () {
+        var currentTown = $(this).text().toLowerCase();
+
+        if (currentTown.includes(searchText)) {
+            $(this).css('font-weight', 'bold');
+            matches++;
+        } else {
+            $(this).css('font-weight', 'normal');
+        }
+    });
+
+    $('#result').text(matches + ' matches found.');
+}
+function search() {
+    var searchText = $('#searchText').val().toLowerCase();
+    var townsList = $('#towns li');
+
+    var matches = 0;
+
+    townsList.each(function () {
+        var currentTown = $(this).text().toLowerCase();
+
+        if (currentTown.includes(searchText)) {
+            $(this).html($(this).text().replace(new RegExp(searchText, 'ig'), '<strong>$&</strong>'));
+            matches++;
+        } else {
+            $(this).html($(this).text());
+        }
+    });
+
+    $('#result').html(matches + ' matches found.');
+}
+
+
+
+
+function search() {
+    var searchText = $('#searchText').val().toLowerCase();
+    var townsList = $('#towns li');
+
+    var matches = 0;
+
+    townsList.each(function () {
+        var currentTown = $(this).text().toLowerCase();
+
+        if (currentTown.includes(searchText)) {
+            $(this).addClass('highlight');
+            matches++;
+        } else {
+            $(this).removeClass('highlight');
+        }
+    });
+
+    $('#result').text(matches + ' matches found.');
+}
+

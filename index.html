@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="style.css">
     
 </head>
@@ -101,6 +102,7 @@
 <span id="totalResult">Total Result: </span>
 
 
+
 <!-- 6 -->
 <h3>6. Select every link that has a “name” attribute, and change its background color.</h3>
 <a href="#" name="link1" onclick="changeColor(this)">Link with name attribute 1</a>
@@ -155,6 +157,47 @@
     </tbody>
 </table>
 
+<!-- 11 -->
+<h3>11. create a form with user details and password and add form validation using jquery and 
+    hide all input on submit and show form values using ajax.</h3>
+    
+</head>
+<body>
+
+    <form id="userForm">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+    
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+    
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+
+
+
+<!-- 12 -->
+<h3>12. An HTML page holds a list of towns, a search box and a [Search] button. 
+    Implement the search function to bold the items from the list which include the 
+    text from the search box. Also print the amount of items the current search 
+    matches in the format "<matches> matches found."</h3>
+    <ul id="towns">
+        <li>Sofia</li>
+        <li>Pleven</li>
+        <li>Varna</li>
+        <li>Plovdiv</li>
+    </ul>
+    <input type="text" id="searchText" />
+    <button onclick="search()">Search</button>
+    <div id="result"></div>
+    
+    <div id="formValues"></div>
+
+    
     <script src="test.js"></script>
 </body>
 </html>
